@@ -1,0 +1,84 @@
+@import './variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--apple-bg);
+  color: var(--apple-text);
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Common Section Container */
+.section {
+  padding: 56px 16px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 72px 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 96px 32px;
+  }
+}
+
+.section-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  color: var(--apple-text);
+}
+
+.section-desc {
+  font-size: clamp(16px, 4vw, 21px);
+  line-height: 1.55;
+  color: var(--apple-text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Touch target accessibility helper */
+a, button {
+  min-height: var(--min-touch-target);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--apple-blue);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
