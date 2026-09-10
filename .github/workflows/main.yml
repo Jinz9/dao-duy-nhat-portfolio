@@ -27,12 +27,16 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Initialize Capacitor & Wrap Web
+      - name: Prepare Web Assets & Initialize Capacitor
         run: |
+          mkdir -p www
+          # Copy toàn bộ file web (trừ thư mục ẩn và www) vào thư mục www
+          rsync -av --exclude='.git' --exclude='.github' --exclude='www' --exclude='node_modules' ./ www/
           npm init -y
           npm install @capacitor/core @capacitor/cli @capacitor/android
-          npx cap init "MyPortfolio" "com.nhat.portfolio" --web-dir .
+          npx cap init "MyPortfolio" "com.nhat.portfolio" --web-dir www
           npx cap add android
+          npx cap sync android
 
       - name: Build APK with Gradle
         run: |
